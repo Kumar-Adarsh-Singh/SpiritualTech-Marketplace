@@ -41,7 +41,7 @@ export default function SessionFilters({ filters, onChange }) {
         />
         <input
           type="text"
-          placeholder="Search sessions..."
+          placeholder="     Search sessions..."
           value={localSearch}
           onChange={(e) => setLocalSearch(e.target.value)}
           className="input-field pl-9"
@@ -56,11 +56,10 @@ export default function SessionFilters({ filters, onChange }) {
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => handleChange('category', '')}
-            className={`badge border transition-all ${
-              !filters.category
-                ? 'bg-primary/20 text-primary-light border-primary/30'
-                : 'bg-surface-light text-text-muted border-border hover:border-primary/20'
-            }`}
+            className={`badge border transition-all ${!filters.category
+              ? 'bg-primary/20 text-primary-light border-primary/30'
+              : 'bg-surface-light text-text-muted border-border hover:border-primary/20'
+              }`}
           >
             All
           </button>
@@ -68,11 +67,10 @@ export default function SessionFilters({ filters, onChange }) {
             <button
               key={cat.value}
               onClick={() => handleChange('category', cat.value)}
-              className={`badge border transition-all ${
-                filters.category === cat.value
-                  ? 'bg-primary/20 text-primary-light border-primary/30'
-                  : 'bg-surface-light text-text-muted border-border hover:border-primary/20'
-              }`}
+              className={`badge border transition-all ${filters.category === cat.value
+                ? 'bg-primary/20 text-primary-light border-primary/30'
+                : 'bg-surface-light text-text-muted border-border hover:border-primary/20'
+                }`}
             >
               {cat.label}
             </button>

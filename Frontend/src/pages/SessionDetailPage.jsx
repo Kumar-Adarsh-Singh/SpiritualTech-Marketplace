@@ -211,7 +211,7 @@ export default function SessionDetailPage() {
         {/* Sidebar */}
         <aside className="lg:w-80 flex-shrink-0 space-y-6">
           {/* Price & Book */}
-          <div className="glass-card p-6 space-y-4 lg:sticky lg:top-24">
+          <div className="glass-card p-6 space-y-4 lg:sticky lg:top-24 z-1">
             <div className="text-center">
               <p className="text-3xl font-heading font-bold text-accent">
                 {formatPrice(session.price, session.currency)}
@@ -249,7 +249,7 @@ export default function SessionDetailPage() {
           </div>
 
           {/* Creator card */}
-          <div className="glass-card p-5">
+          <div className="glass-card p-5 lg:sticky lg:top-54 z-1">
             <p className="text-xs text-text-muted uppercase tracking-wider mb-3">Created by</p>
             <div className="flex items-center gap-3">
               {creator?.avatar ? (

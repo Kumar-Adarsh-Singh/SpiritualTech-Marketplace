@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { GOOGLE_AUTH_URL, GITHUB_AUTH_URL } from '../../utils/constants';
@@ -18,7 +18,18 @@ export default function Navbar() {
   const { user, isAuthenticated, isCreator, logout } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const profileDropdownRef = useRef(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (profileDropdownRef.current && !profileDropdownRef.current.contains(event.target)) {
+        setProfileOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleLogout = () => {
     logout();
@@ -63,7 +74,7 @@ export default function Navbar() {
                 )}
 
                 {/* Profile Dropdown */}
-                <div className="relative">
+                <div className="relative" ref={profileDropdownRef}>
                   <button
                     onClick={() => setProfileOpen(!profileOpen)}
                     className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-light border border-border hover:border-primary/30 transition-all"
@@ -95,12 +106,7 @@ export default function Navbar() {
                   </button>
 
                   {profileOpen && (
-                    <>
-                      <div
-                        className="fixed inset-0 z-10"
-                        onClick={() => setProfileOpen(false)}
-                      />
-                      <div className="absolute right-0 top-full mt-2 w-56 bg-surface border border-border rounded-xl shadow-2xl py-2 z-20">
+                    <div className="absolute right-0 top-full mt-2 w-56 bg-surface border border-border rounded-xl shadow-2xl py-2 z-50">
                         <div className="px-4 py-2 border-b border-border">
                           <p className="text-sm font-medium text-text">
                             {user?.first_name
@@ -151,8 +157,7 @@ export default function Navbar() {
                             Sign Out
                           </button>
                         </div>
-                      </div>
-                    </>
+                    </div>
                   )}
                 </div>
               </>

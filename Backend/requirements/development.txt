@@ -1,0 +1,8 @@
+-r base.txt
+
+# Dev server
+django-debug-toolbar>=4.2,<5.0
+
+# Code quality
+flake8>=7.0,<8.0
+black>=24.0,<25.0

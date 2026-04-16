@@ -1,0 +1,4 @@
+-r base.txt
+
+# Production WSGI server
+gunicorn>=21.2,<22.0

@@ -1,0 +1,24 @@
+# Django Core
+Django>=4.2,<5.0
+djangorestframework>=3.14,<4.0
+django-cors-headers>=4.3,<5.0
+django-filter>=23.5,<24.0
+
+# Database
+psycopg2-binary>=2.9,<3.0
+
+# Authentication
+djangorestframework-simplejwt>=5.3,<6.0
+PyJWT>=2.8,<3.0
+
+# OAuth - HTTP requests to Google/GitHub
+requests>=2.31,<3.0
+
+# Environment variables
+python-dotenv>=1.0,<2.0
+
+# Image handling
+Pillow>=10.0,<11.0
+
+# Payment gateway
+razorpay>=1.4,<2.0
